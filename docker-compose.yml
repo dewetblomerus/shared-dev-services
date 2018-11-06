@@ -7,7 +7,7 @@ services:
     ports:
       - "${POSTGRES_PORT:-5432}:5432"
     environment:
-      POSTGRES_USER: "dewet"
+      POSTGRES_USER: "postgres"
     restart: "always"
     volumes:
       - ./data:/var/lib/postgresql/data
