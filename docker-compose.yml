@@ -2,7 +2,7 @@ version: "3"
 services:
 
   shared_postgres:
-    container_name: shared_postgres
+    container_name: shared-postgres
     image: postgres:11-alpine
     ports:
       - "${POSTGRES_PORT:-5432}:5432"
@@ -10,14 +10,14 @@ services:
       POSTGRES_USER: "postgres"
     restart: "always"
     volumes:
-      - ./data:/var/lib/postgresql/data
+      - ./postgres-data:/var/lib/postgresql/data
     logging:
       options:
         max-size: "${CITUS_LOGS_SIZE:-100m}"
         max-file: "4"
 
   shared_redis:
-    container_name: shared_redis
+    container_name: shared-redis
     image: redis:4.0.11-alpine
     environment:
       # ALLOW_EMPTY_PASSWORD is recommended only for development.
